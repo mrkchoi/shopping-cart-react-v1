@@ -1,0 +1,25 @@
+.storeitem__img {
+  width: 100%;
+  height: 4rem;
+}
+
+.storeitem__qty {
+  margin-left: 1rem;
+  width: 4rem;
+}
+.storeitem__qty {
+  width: 5rem !important;
+}
+
+.store__form {
+  width: 100%;
+}
+.store__addtocart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.store__card-price {
+  margin-top: 2rem;
+  font-size: 1.2rem !important;
+}

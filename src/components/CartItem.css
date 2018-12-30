@@ -1,0 +1,19 @@
+.cartitem__trash--wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cartitem__remove {
+  margin-left: 1rem !important;
+  font-size: 1.2rem !important;
+}
+.cartitem__qty {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cartitem__qty input {
+  width: 8rem !important;
+}

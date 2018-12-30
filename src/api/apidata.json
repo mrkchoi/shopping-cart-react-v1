@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "5c29318b87de092c64931905",
+    "picture": "#F55D3E",
+    "name": "MOLTONIC",
+    "snippet": "Isostream",
+    "about": "Officia voluptate nisi esse et exercitation ullamco nulla Lorem amet ipsum non. Voluptate deserunt incididunt voluptate nisi ipsum cillum velit ut occaecat minim fugiat adipisicing officia commodo. Tempor Lorem do nulla cupidatat incididunt ea magna fugiat esse mollit labore velit aliqua cillum.",
+    "price": 36
+  },
+  {
+    "_id": "5c29318beea5de9b9ba3331a",
+    "picture": "#878E88",
+    "name": "COLAIRE",
+    "snippet": "Zentury",
+    "about": "Sunt qui incididunt dolore aliqua elit sit tempor esse. Dolore culpa exercitation mollit nostrud minim sint ut aliqua quis aliqua excepteur in. Consequat tempor voluptate et sit et aute cillum culpa aliqua. In ea elit sint velit adipisicing voluptate. Magna officia est culpa officia deserunt do exercitation est in adipisicing.",
+    "price": 42
+  },
+  {
+    "_id": "5c29318bf0621876c24103aa",
+    "picture": "#F7CB15",
+    "name": "XIIX",
+    "snippet": "Xeronk",
+    "about": "Duis ex aute fugiat sit proident qui aliquip eu est. Velit officia aliquip consequat minim qui minim sunt in aliqua et nulla Lorem labore veniam. Reprehenderit exercitation magna adipisicing excepteur non. Voluptate eiusmod voluptate velit culpa non nulla aliquip irure commodo.",
+    "price": 16
+  },
+  {
+    "_id": "5c29318b809693537182d5ad",
+    "picture": "#6CAE75",
+    "name": "ELPRO",
+    "snippet": "Bleeko",
+    "about": "Non quis mollit veniam est est fugiat excepteur veniam incididunt irure dolore nulla qui. Duis laboris ea reprehenderit mollit ex anim fugiat enim minim deserunt nostrud aute. Aute sit consequat sunt velit commodo enim excepteur sit.",
+    "price": 43
+  },
+  {
+    "_id": "5c29318b1deb340cb4dd438b",
+    "picture": "#76BED0",
+    "name": "PAPRICUT",
+    "snippet": "Isodrive",
+    "about": "Aliquip proident reprehenderit exercitation est nulla veniam do cillum do culpa. Ex officia veniam proident aliqua elit commodo veniam incididunt pariatur esse ea irure do. Nisi velit eiusmod nisi voluptate eiusmod nisi ipsum ea in. Sint minim eiusmod qui sit excepteur voluptate in Lorem ea ex incididunt dolore eiusmod. Deserunt labore proident sunt laboris ipsum laborum elit ea.",
+    "price": 22
+  },
+  {
+    "_id": "5c29318b5a94208b9aa5085b",
+    "picture": "#EF798A",
+    "name": "BIOLIVE",
+    "snippet": "Fibrodyne",
+    "about": "Id consequat incididunt deserunt dolore veniam incididunt nostrud laboris veniam consectetur laborum non. Esse sit ea minim consequat. Irure consequat exercitation fugiat esse. Adipisicing elit ut aliqua cillum reprehenderit anim et eu labore. Tempor magna cupidatat adipisicing magna ullamco est sit officia qui aliquip id deserunt aliqua. Eu exercitation culpa ipsum ex minim est nulla esse. Ipsum aute pariatur id proident magna officia nostrud duis veniam veniam.",
+    "price": 42
+  }
+]
