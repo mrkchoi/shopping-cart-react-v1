@@ -8,9 +8,16 @@ class StoreList extends React.Component {
   componentDidMount() {
     console.log(data);
   }
+
   renderList() {
     return data.map(item => {
-      return <StoreItem itemDetails={item} key={item._id} />;
+      return (
+        <StoreItem
+          itemDetails={item}
+          key={item._id}
+          onSubmit={item => this.props.onSubmit(item)}
+        />
+      );
     });
   }
   render() {
