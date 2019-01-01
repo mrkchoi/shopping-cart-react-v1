@@ -8,22 +8,36 @@ class CartItem extends React.Component {
     cartItemQty: 0
   };
 
-  updateValue = e => {
-    this.setState({ cartItemQty: e.target.value });
+  //   On mount, update the CartItem state with correct qty
+  componentDidMount() {
+    this.setState({ cartItemQty: this.props.itemDetails.qty }, () =>
+      console.log(this.state.cartItemQty)
+    );
+  }
+
+  //   Allow component to rerender when props value changes
+  componentWillReceiveProps(nextProps) {
+    this.setState({ cartItemQty: nextProps.itemDetails.qty });
+  }
+
+  //   Updating item qty from CART
+  updateQty = e => {
+    this.setState({ cartItemQty: e.target.value }, () =>
+      console.log(this.state.cartItemQty)
+    );
   };
 
-  updateCartItem = () => {
-    this.props.updateCartItem(this.state.cartItemQty);
-  };
-
+  //   Delete item from cart
   DeleteItem = e => {
     e.preventDefault();
     this.props.DeleteItem(this.props.itemDetails._id);
+    this.setState({ cartItemQty: 0 }, () =>
+      console.log(this.state.cartItemQty)
+    );
   };
 
   render() {
     const { name, price, qty } = this.props.itemDetails;
-    // console.log(name, price, qty);
     let subtotal = price * qty;
 
     return (
@@ -35,14 +49,14 @@ class CartItem extends React.Component {
             type="number"
             placeholder="Qty"
             className="cartitem__qty"
-            defaultValue={qty}
-            onChange={this.updateValue}
+            value={this.state.cartItemQty}
+            onChange={this.updateQty}
           />
         </Table.Cell>
         <Table.Cell className="cartitem__trash--wrapper">
           <div>${subtotal}</div>
           <div>
-            <Button basic color="blue" onClick={this.updateCartItem}>
+            <Button basic color="blue">
               Update
             </Button>
             <a href="/" onClick={this.DeleteItem}>

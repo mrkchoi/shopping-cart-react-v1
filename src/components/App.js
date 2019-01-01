@@ -21,22 +21,27 @@ class App extends React.Component {
       // If the cart is not empty
       // Check if the cart already contains the same object with matching ID
       // If there is a match, add the new qty value to the previous state qty
+
       this.state.cart.forEach((el, index) => {
         if (el._id === item._id) {
           let stateCartCopy = [...this.state.cart];
           stateCartCopy[index].qty += item.qty;
           this.setState({ cart: stateCartCopy }, () => this.calculateTotal());
-        } else {
-          // If there is no match, add the new item object to the existing state
-          this.state.cart.forEach(el => {
-            if (el._id !== item._id) {
-              this.setState({ cart: [...this.state.cart, item] }, () =>
-                this.calculateTotal()
-              );
-            }
-          });
+          console.log(this.state.cart);
         }
       });
+
+      //   Check to see if there the item already exists in our cart
+      let matchedItem = this.state.cart.filter(el => {
+        return el._id === item._id;
+      });
+
+      // If the item does not exist in our cart, add the new item object to the existing state cart
+      if (matchedItem.length === 0) {
+        this.setState({ cart: [...this.state.cart, item] }, () =>
+          this.calculateTotal()
+        );
+      }
     }
     // console.log(this.state);
   };
@@ -56,7 +61,17 @@ class App extends React.Component {
     const newCart = this.state.cart.filter(el => {
       return el._id !== item;
     });
-    this.setState({ cart: newCart });
+    this.setState({ cart: newCart }, () => this.calculateTotal());
+  };
+
+  updateItemQty = (qty, id) => {
+    this.state.cart.map((el, index) => {
+      if (el._id === id) {
+        let stateCartCopy = [...this.state.cart];
+        stateCartCopy[index].qty = qty;
+        this.setState({ cart: stateCartCopy }, console.log(this.state.cart));
+      }
+    });
   };
 
   render() {
@@ -75,6 +90,7 @@ class App extends React.Component {
             cartTotal={this.state.total}
             updateCartItem={newQty => this.updateCartItem(newQty)}
             deleteItem={item => this.deleteItem(item)}
+            updateItemQty={(qty, id) => this.updateItemQty(qty, id)}
           />
         </div>
       </div>
