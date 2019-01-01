@@ -16,8 +16,8 @@ class CartList extends React.Component {
               itemDetails={item}
               key={item._id}
               updateCartItem={newQty => this.props.updateCartItem(newQty)}
-              DeleteItem={item => this.props.deleteItem(item)}
-              updateItemQty={(qty, id) => this.props.updateItemQty(qty, id)}
+              deleteItem={item => this.props.deleteItem(item)}
+              cartUpdateQty={(qty, id) => this.props.cartUpdateQty(qty, id)}
             />
           );
         })}

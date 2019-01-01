@@ -10,8 +10,9 @@ class CartItem extends React.Component {
 
   //   On mount, update the CartItem state with correct qty
   componentDidMount() {
-    this.setState({ cartItemQty: this.props.itemDetails.qty }, () =>
-      console.log(this.state.cartItemQty)
+    this.setState(
+      { cartItemQty: this.props.itemDetails.qty }
+      // , () => console.log(this.state.cartItemQty)
     );
   }
 
@@ -20,19 +21,29 @@ class CartItem extends React.Component {
     this.setState({ cartItemQty: nextProps.itemDetails.qty });
   }
 
-  //   Updating item qty from CART
+  //   Updating item qty from CART [ONLY in local state]
   updateQty = e => {
-    this.setState({ cartItemQty: e.target.value }, () =>
-      console.log(this.state.cartItemQty)
+    this.setState(
+      { cartItemQty: e.target.value }
+      // , () => console.log(this.state.cartItemQty)
+    );
+  };
+
+  //   Updating item qty FROM CART [BUTTON CLICK]
+  cartUpdateQty = () => {
+    this.props.cartUpdateQty(
+      this.state.cartItemQty,
+      this.props.itemDetails._id
     );
   };
 
   //   Delete item from cart
-  DeleteItem = e => {
+  deleteItem = e => {
     e.preventDefault();
-    this.props.DeleteItem(this.props.itemDetails._id);
-    this.setState({ cartItemQty: 0 }, () =>
-      console.log(this.state.cartItemQty)
+    this.props.deleteItem(this.props.itemDetails._id);
+    this.setState(
+      { cartItemQty: 0 }
+      // , () => console.log(this.state.cartItemQty)
     );
   };
 
@@ -56,10 +67,10 @@ class CartItem extends React.Component {
         <Table.Cell className="cartitem__trash--wrapper">
           <div>${subtotal}</div>
           <div>
-            <Button basic color="blue">
+            <Button basic color="blue" onClick={this.cartUpdateQty}>
               Update
             </Button>
-            <a href="/" onClick={this.DeleteItem}>
+            <a href="/" onClick={this.deleteItem}>
               <Icon
                 name="trash alternate outline"
                 color="red"

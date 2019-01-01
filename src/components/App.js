@@ -27,7 +27,7 @@ class App extends React.Component {
           let stateCartCopy = [...this.state.cart];
           stateCartCopy[index].qty += item.qty;
           this.setState({ cart: stateCartCopy }, () => this.calculateTotal());
-          console.log(this.state.cart);
+          //   console.log(this.state.cart);
         }
       });
 
@@ -64,12 +64,12 @@ class App extends React.Component {
     this.setState({ cart: newCart }, () => this.calculateTotal());
   };
 
-  updateItemQty = (qty, id) => {
-    this.state.cart.map((el, index) => {
+  cartUpdateQty = (qty, id) => {
+    this.state.cart.forEach((el, index) => {
       if (el._id === id) {
-        let stateCartCopy = [...this.state.cart];
-        stateCartCopy[index].qty = qty;
-        this.setState({ cart: stateCartCopy }, console.log(this.state.cart));
+        let newStateCart = [...this.state.cart];
+        newStateCart[index].qty = qty;
+        this.setState({ cart: newStateCart }, () => this.calculateTotal());
       }
     });
   };
@@ -90,7 +90,7 @@ class App extends React.Component {
             cartTotal={this.state.total}
             updateCartItem={newQty => this.updateCartItem(newQty)}
             deleteItem={item => this.deleteItem(item)}
-            updateItemQty={(qty, id) => this.updateItemQty(qty, id)}
+            cartUpdateQty={(qty, id) => this.cartUpdateQty(qty, id)}
           />
         </div>
       </div>
