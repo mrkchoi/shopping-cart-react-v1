@@ -9,13 +9,14 @@ import CartList from "./CartList";
 
 class App extends React.Component {
   state = {
-    cart: []
+    cart: [],
+    total: 0
   };
 
   onStoreItemSubmit = item => {
     // If the cart is empty, then update the cart state with the new item
     if (this.state.cart.length === 0 && item.qty !== 0) {
-      this.setState({ cart: [item] });
+      this.setState({ cart: [item] }, () => this.calculateTotal());
     } else if (this.state.cart.length !== 0 && item.qty !== 0) {
       // If the cart is not empty
       // Check if the cart already contains the same object with matching ID
@@ -24,18 +25,31 @@ class App extends React.Component {
         if (el._id === item._id) {
           let stateCartCopy = [...this.state.cart];
           stateCartCopy[index].qty += item.qty;
-          this.setState({ cart: stateCartCopy });
+          this.setState({ cart: stateCartCopy }, () => this.calculateTotal());
         } else {
           // If there is no match, add the new item object to the existing state
           this.state.cart.forEach(el => {
             if (el._id !== item._id) {
-              this.setState({ cart: [...this.state.cart, item] });
+              this.setState({ cart: [...this.state.cart, item] }, () =>
+                this.calculateTotal()
+              );
             }
           });
         }
       });
     }
-    // console.log(this.state.cart);
+    // console.log(this.state);
+  };
+
+  calculateTotal = () => {
+    // Calculate total value and add to state, then pass down to CartList total
+    let total = this.state.cart.reduce((total, current) => {
+      return (total += current.qty * current.price);
+    }, 0);
+
+    // Pass the new total cart amount to App state
+    this.setState({ total: total });
+    // console.log(this.state);
   };
 
   render() {
@@ -49,7 +63,7 @@ class App extends React.Component {
         <Divider />
         <div className="section__wrapper">
           <HeaderBlock section={"Cart Summary"} icon={"shopping basket"} />
-          <CartList />
+          <CartList cartItems={this.state.cart} cartTotal={this.state.total} />
         </div>
       </div>
     );

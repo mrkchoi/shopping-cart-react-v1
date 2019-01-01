@@ -10,8 +10,9 @@ class CartList extends React.Component {
   renderList() {
     return (
       <React.Fragment>
-        <CartItem />
-        <CartItem />
+        {this.props.cartItems.map(item => {
+          return <CartItem itemDetails={item} key={item._id} />;
+        })}
       </React.Fragment>
     );
   }
@@ -38,7 +39,7 @@ class CartList extends React.Component {
               <strong>Total</strong>
             </Table.HeaderCell>
             <Table.HeaderCell>
-              <strong>$153</strong>
+              <strong>${this.props.cartTotal}</strong>
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>

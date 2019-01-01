@@ -4,15 +4,26 @@ import { Table, Icon, Button, Input } from "semantic-ui-react";
 import "./CartItem.css";
 
 function CartItem(props) {
+  const { name, price, qty } = props.itemDetails;
+
+  console.log(name, price, qty);
+
+  let subtotal = price * qty;
+
   return (
     <Table.Row>
-      <Table.Cell>Title</Table.Cell>
-      <Table.Cell>$100</Table.Cell>
+      <Table.Cell>{name}</Table.Cell>
+      <Table.Cell>${price}</Table.Cell>
       <Table.Cell className="cartitem__qty--wrapper">
-        <Input type="number" placeholder="Qty" className="cartitem__qty" />
+        <Input
+          type="number"
+          placeholder="Qty"
+          className="cartitem__qty"
+          value={qty}
+        />
       </Table.Cell>
       <Table.Cell className="cartitem__trash--wrapper">
-        <div>Subtotal</div>
+        <div>${subtotal}</div>
         <div>
           <Button basic color="blue">
             Update
