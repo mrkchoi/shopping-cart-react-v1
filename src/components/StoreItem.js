@@ -33,6 +33,12 @@ class StoreItem extends React.Component {
     });
   };
 
+  addItemToCart = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    this.setState({ qty: 0 });
+  };
+
   render() {
     const { name, picture, snippet, about, price } = this.props.itemDetails;
     let desc = about.substring(1, 60);
@@ -54,10 +60,7 @@ class StoreItem extends React.Component {
 
         <Card.Content extra>
           <div className="ui two buttons">
-            <Form
-              className="store__form"
-              onSubmit={e => this.props.onSubmit(this.state)}
-            >
+            <Form className="store__form" onSubmit={this.addItemToCart}>
               <Form.Field inline className="store__addtocart">
                 <Button type="submit" basic color="green">
                   Add to cart
@@ -66,6 +69,8 @@ class StoreItem extends React.Component {
                   <input
                     placeholder="Qty"
                     type="number"
+                    min="0"
+                    value={this.state.qty}
                     className="storeitem__qty"
                     onChange={this.handleChange}
                   />

@@ -14,19 +14,28 @@ class App extends React.Component {
 
   onStoreItemSubmit = item => {
     // If the cart is empty, then update the cart state with the new item
-    if (this.state.cart.length === 0) {
-      this.setState({ cart: item }, () => console.log(this.state));
-    } else {
+    if (this.state.cart.length === 0 && item.qty !== 0) {
+      this.setState({ cart: [item] });
+    } else if (this.state.cart.length !== 0 && item.qty !== 0) {
       // If the cart is not empty
       // Check if the cart already contains the same object with matching ID
-      const checkIfInCart = this.state.cart.map(cartItem => {
-        return cartItem._id === item._id;
-      });
-      console.log(checkIfInCart);
-
-      // If there is no match, add the new item object to the existing state
       // If there is a match, add the new qty value to the previous state qty
+      this.state.cart.forEach((el, index) => {
+        if (el._id === item._id) {
+          let stateCartCopy = [...this.state.cart];
+          stateCartCopy[index].qty += item.qty;
+          this.setState({ cart: stateCartCopy });
+        } else {
+          // If there is no match, add the new item object to the existing state
+          this.state.cart.forEach(el => {
+            if (el._id !== item._id) {
+              this.setState({ cart: [...this.state.cart, item] });
+            }
+          });
+        }
+      });
     }
+    // console.log(this.state.cart);
   };
 
   render() {
