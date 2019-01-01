@@ -52,6 +52,13 @@ class App extends React.Component {
     // console.log(this.state);
   };
 
+  deleteItem = item => {
+    const newCart = this.state.cart.filter(el => {
+      return el._id !== item;
+    });
+    this.setState({ cart: newCart });
+  };
+
   render() {
     return (
       <div className="ui container app__wrapper">
@@ -63,7 +70,12 @@ class App extends React.Component {
         <Divider />
         <div className="section__wrapper">
           <HeaderBlock section={"Cart Summary"} icon={"shopping basket"} />
-          <CartList cartItems={this.state.cart} cartTotal={this.state.total} />
+          <CartList
+            cartItems={this.state.cart}
+            cartTotal={this.state.total}
+            updateCartItem={newQty => this.updateCartItem(newQty)}
+            deleteItem={item => this.deleteItem(item)}
+          />
         </div>
       </div>
     );

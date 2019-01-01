@@ -11,7 +11,14 @@ class CartList extends React.Component {
     return (
       <React.Fragment>
         {this.props.cartItems.map(item => {
-          return <CartItem itemDetails={item} key={item._id} />;
+          return (
+            <CartItem
+              itemDetails={item}
+              key={item._id}
+              updateCartItem={newQty => this.props.updateCartItem(newQty)}
+              DeleteItem={item => this.props.deleteItem(item)}
+            />
+          );
         })}
       </React.Fragment>
     );
